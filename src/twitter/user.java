@@ -25,20 +25,17 @@ public class user extends Composite implements Subject, Observer{
     //User's ID
     private String uniqueID;
     
-    //List to record user's followers
+    //List to record who the user is following
     private DefaultListModel<user> following = new DefaultListModel<>();
     
-    //List to record who user follows
+    //List to record user's followers
     private DefaultListModel<user> followers = new DefaultListModel<>();
     
     //Updated news feed
     private DefaultListModel<String> news = new DefaultListModel<>();
     
-    //Observer list
-    private DefaultListModel<Subject> subjects = new DefaultListModel<>();
-    
     //Storing tweet 
-    private String message;
+    private DefaultListModel<String> message = new DefaultListModel<>();
     
     private JFrame frame = new userView(this);
     
@@ -52,6 +49,10 @@ public class user extends Composite implements Subject, Observer{
     
     public void addFollower(user s){
         followers.addElement(s);
+    }
+    
+    public void addMessage(String s){
+        message.addElement(s);
     }
     
     public void addTweet(String s){
@@ -75,9 +76,7 @@ public class user extends Composite implements Subject, Observer{
         this.frame.setTitle(getID());
     }
     
-    public void setMessage(String m){
-        this.message = m;
-    }
+    
 
     @Override
     public void setID(String ID) {
@@ -89,6 +88,7 @@ public class user extends Composite implements Subject, Observer{
         return this.uniqueID;
     }
 
+    
     @Override
     public String toString() {
         return this.getID();
@@ -100,14 +100,14 @@ public class user extends Composite implements Subject, Observer{
     }
 
     @Override
-    public void update(Subject subject) {
-        
+    public void update(user subject) {
+        subject.addTweet(this.message.lastElement());
     }
 
     @Override
     public void notifyObservers(user user) {
-        for(int i = 0; i < subjects.size(); i++){
-            
+        for(int i = 0; i < followers.size(); i++){
+            this.update(followers.getElementAt(i));
         }
     }
 

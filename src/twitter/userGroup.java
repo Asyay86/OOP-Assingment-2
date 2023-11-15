@@ -37,13 +37,12 @@ public class userGroup extends Composite implements twitter.Observer{
         return this.getID();
     }
 
-
-    public void add(user u) {
+    @Override
+    public void update(user data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public void update(user u) {
+    public void add(user u) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

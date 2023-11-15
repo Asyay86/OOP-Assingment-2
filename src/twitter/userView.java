@@ -150,7 +150,11 @@ public class userView extends javax.swing.JFrame {
         user com = adminPanel.searchId(name);
         if(com.getID().equals(name)){
             us.addFollowing(com);
+            com.addFollower(us);
         }
+        
+        
+        
         followList.setModel(us.getFollowing());
     }//GEN-LAST:event_followButtonActionPerformed
 
@@ -158,6 +162,10 @@ public class userView extends javax.swing.JFrame {
         // TODO add your handling code here:
         String post = tweetMessage.getText();
         us.addTweet(post);
+        us.addMessage(post);
+        for(int i = 0; i < us.getFollowers().size(); i++){
+            us.update((user) us.getFollowers().get(i));
+        }
         newsList.setModel(us.getNews());
     }//GEN-LAST:event_postButtonActionPerformed
 
