@@ -13,10 +13,11 @@ public class userTotal implements Visitor{
     public int num = 0;
     
     @Override
-    public void visit(Composite node) {
+    public int visit(user node) {
         if(node instanceof user){
             num++;
         }
+        return num;
     }
     
     public int getNum(){

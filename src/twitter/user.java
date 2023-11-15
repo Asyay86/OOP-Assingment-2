@@ -18,6 +18,9 @@ public class user extends Composite implements Subject, twitter.Observer{
     
     public user(String ID){
         uniqueID = ID;
+        this.following = new DefaultListModel<>();
+        this.followers = new DefaultListModel<>();
+        this.news = new DefaultListModel<>();
     }
     
     //User's ID
@@ -27,7 +30,7 @@ public class user extends Composite implements Subject, twitter.Observer{
     private DefaultListModel<String> following = new DefaultListModel<>();
     
     //List to record who user follows
-    private DefaultListModel<String> beingFollowed = new DefaultListModel<>();
+    private DefaultListModel<String> followers = new DefaultListModel<>();
     
     //Updated news feed
     private DefaultListModel<String> news = new DefaultListModel<>();
@@ -41,6 +44,26 @@ public class user extends Composite implements Subject, twitter.Observer{
         following.addElement(s);
     }
     
+    public void addFollower(String s){
+        followers.addElement(s);
+    }
+    
+    public void addTweet(String s){
+        news.addElement(s);
+    }
+    
+    public DefaultListModel getFollowing(){
+        return following;
+    }
+    
+    public DefaultListModel getFollowers(){
+        return followers;
+    }
+    
+    public DefaultListModel getNews(){
+        return news;
+    }
+    
     public void setVisible(){
         this.frame.setVisible(true);
         this.frame.setTitle(getID());
@@ -48,7 +71,6 @@ public class user extends Composite implements Subject, twitter.Observer{
     
     public void setMessage(String m){
         this.message = m;
-       
     }
 
     @Override
@@ -68,20 +90,26 @@ public class user extends Composite implements Subject, twitter.Observer{
 
     @Override
     public void add(twitter.Observer observer) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void update(String data) {
         
     }
 
     @Override
+    public void update(Subject data) {
+        if(data instanceof user){
+            user following = (user) data;
+            news.lastElement();
+        }
+    }
+
+    @Override
     public void notifyObservers(twitter.Observer observer) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        observer.update(this);
     }
     
-    
+    public int accept(Visitor visitor){
+        return visitor.visit(this);
+    }
+   
     
     
 }

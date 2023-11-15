@@ -10,6 +10,6 @@ package twitter;
  */
 public interface Observer {
     
-    public void update(String data);
+    public void update(Subject subject);
     
 }

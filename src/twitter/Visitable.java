@@ -9,5 +9,5 @@ package twitter;
  * @author zihan
  */
 public interface Visitable {
-   public String accept(Visitor v);
+   int accept(Visitor v);
 }

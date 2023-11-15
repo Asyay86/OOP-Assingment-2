@@ -19,11 +19,14 @@ public class userGroup extends Composite implements twitter.Observer{
     }
     
     private String groupID;
-    
     private DefaultListModel<String> users = new DefaultListModel<>();
+    private DefaultListModel<String> groups = new DefaultListModel<>();
+    
+    
+    
+    
     
     //implement components
-
     @Override
     public void setID(String ID) {
         this.groupID = ID;
@@ -40,13 +43,8 @@ public class userGroup extends Composite implements twitter.Observer{
     }
 
     @Override
-    public void update(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void setSubject(Subject subject) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Subject data) {
+        
     }
 
   

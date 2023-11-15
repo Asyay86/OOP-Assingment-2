@@ -183,11 +183,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Show Group Total"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showGroupActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="showPercentage">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show Positive Percentage"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showPercentageActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="showMessages">
       <Properties>

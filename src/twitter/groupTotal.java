@@ -11,7 +11,7 @@ package twitter;
 public class groupTotal implements Visitor{
 
     @Override
-    public void visit(Composite node) {
+    public int visit(user node) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

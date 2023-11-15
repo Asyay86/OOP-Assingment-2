@@ -10,6 +10,6 @@ package twitter;
  */
 public interface Visitor {
     
-    void visit(Composite node);
+    int visit(user node);
     
 }

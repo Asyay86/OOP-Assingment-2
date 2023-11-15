@@ -9,10 +9,10 @@ package twitter;
  * @author zihan
  */
 public class messageTotal implements Visitor{
-
+    
     @Override
-    public void visit(Composite node) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int visit(user node) {
+        return node.getNews().size();
     }
     
 }

@@ -4,6 +4,8 @@
  */
 package twitter;
 
+import javax.swing.JList;
+
 /**
  *
  * @author zihan
@@ -18,6 +20,7 @@ public class userView extends javax.swing.JFrame {
     
     public userView(user u) {
         this.us = u;
+        
         initComponents();
     }
 
@@ -145,14 +148,16 @@ public class userView extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = userId.getText();
         if(adminPanel.searchId(name)){
-            
+            us.addFollowing(name);
         }
+        followList.setModel(us.getFollowing());
     }//GEN-LAST:event_followButtonActionPerformed
 
     private void postButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postButtonActionPerformed
         // TODO add your handling code here:
         String post = tweetMessage.getText();
-        
+        us.addTweet(post);
+        newsList.setModel(us.getNews());
     }//GEN-LAST:event_postButtonActionPerformed
 
     /**

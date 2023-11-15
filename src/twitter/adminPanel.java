@@ -34,6 +34,7 @@ public class adminPanel extends javax.swing.JFrame {
     }
     
     private static List<user> id = new ArrayList<>();
+    private static List<userGroup> g = new ArrayList<>();
     
     public static boolean searchId(String name){
         boolean result = false;
@@ -47,6 +48,7 @@ public class adminPanel extends javax.swing.JFrame {
         return result;
     }
     
+    //Butoon events
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,8 +117,18 @@ public class adminPanel extends javax.swing.JFrame {
         });
 
         showGroup.setText("Show Group Total");
+        showGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGroupActionPerformed(evt);
+            }
+        });
 
         showPercentage.setText("Show Positive Percentage");
+        showPercentage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPercentageActionPerformed(evt);
+            }
+        });
 
         showMessages.setText("Show Messages Total");
         showMessages.addActionListener(new java.awt.event.ActionListener() {
@@ -232,13 +244,21 @@ public class adminPanel extends javax.swing.JFrame {
 
     private void showMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMessagesActionPerformed
         // TODO add your handling code here:
+        int total = 0;
+        messageTotal m = new messageTotal();
+        for(int i = 0; i < id.size(); i++){
+            total += id.get(i).accept(m);
+        }
+        JOptionPane.showMessageDialog(this, "Total messages: " + total);
     }//GEN-LAST:event_showMessagesActionPerformed
 
     private void openUserViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openUserViewActionPerformed
         // TODO add your handling code here:
         if((user) treeView.getLastSelectedPathComponent() instanceof user){
-            user u = new user(userArea.getText());
+            user u = (((user) treeView.getLastSelectedPathComponent()));
             JFrame userV  = new userView(u);
+            userV.setTitle(u.getID());
+            userV.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(this, "Not applicable to this");
@@ -248,7 +268,7 @@ public class adminPanel extends javax.swing.JFrame {
 
     private void showUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showUserActionPerformed
         // TODO add your handling code here:
-        
+        JOptionPane.showMessageDialog(this, "Total users: " + id.size());
     }//GEN-LAST:event_showUserActionPerformed
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -281,11 +301,21 @@ public class adminPanel extends javax.swing.JFrame {
                 String name = groupArea.getText();
                 userGroup newNode = new userGroup(name + "(Group)");
                 selectedNode.add(newNode);
+                g.add(newNode);
             
                 ((DefaultTreeModel) treeView.getModel()).nodeStructureChanged(selectedNode);
             }
         }
     }//GEN-LAST:event_addGroupActionPerformed
+
+    private void showGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGroupActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Total groups: " + g .size());
+    }//GEN-LAST:event_showGroupActionPerformed
+
+    private void showPercentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPercentageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showPercentageActionPerformed
 
     public void showFrame() {
         setVisible(true);
