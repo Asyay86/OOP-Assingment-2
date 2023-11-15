@@ -147,8 +147,9 @@ public class userView extends javax.swing.JFrame {
     private void followButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followButtonActionPerformed
         // TODO add your handling code here:
         String name = userId.getText();
-        if(adminPanel.searchId(name)){
-            us.addFollowing(name);
+        user com = adminPanel.searchId(name);
+        if(com.getID().equals(name)){
+            us.addFollowing(com);
         }
         followList.setModel(us.getFollowing());
     }//GEN-LAST:event_followButtonActionPerformed

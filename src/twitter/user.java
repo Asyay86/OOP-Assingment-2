@@ -7,14 +7,13 @@ package twitter;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-import java.util.Observable;
-import java.util.Observer;
+
 
 /**
  *
  * @author zihan
  */
-public class user extends Composite implements Subject, twitter.Observer{
+public class user extends Composite implements Subject, Observer{
     
     public user(String ID){
         uniqueID = ID;
@@ -27,24 +26,31 @@ public class user extends Composite implements Subject, twitter.Observer{
     private String uniqueID;
     
     //List to record user's followers
-    private DefaultListModel<String> following = new DefaultListModel<>();
+    private DefaultListModel<user> following = new DefaultListModel<>();
     
     //List to record who user follows
-    private DefaultListModel<String> followers = new DefaultListModel<>();
+    private DefaultListModel<user> followers = new DefaultListModel<>();
     
     //Updated news feed
     private DefaultListModel<String> news = new DefaultListModel<>();
+    
+    //Observer list
+    private DefaultListModel<Subject> subjects = new DefaultListModel<>();
     
     //Storing tweet 
     private String message;
     
     private JFrame frame = new userView(this);
     
-    public void addFollowing(String s){
+    public void postTweet(String content){
+        
+    }
+    
+    public void addFollowing(user s){
         following.addElement(s);
     }
     
-    public void addFollower(String s){
+    public void addFollower(user s){
         followers.addElement(s);
     }
     
@@ -88,27 +94,28 @@ public class user extends Composite implements Subject, twitter.Observer{
         return this.getID();
     }
 
-    @Override
-    public void add(twitter.Observer observer) {
-        
-    }
-
-    @Override
-    public void update(Subject data) {
-        if(data instanceof user){
-            user following = (user) data;
-            news.lastElement();
-        }
-    }
-
-    @Override
-    public void notifyObservers(twitter.Observer observer) {
-        observer.update(this);
-    }
     
     public int accept(Visitor visitor){
         return visitor.visit(this);
     }
+
+    @Override
+    public void update(Subject subject) {
+        
+    }
+
+    @Override
+    public void notifyObservers(user user) {
+        for(int i = 0; i < subjects.size(); i++){
+            
+        }
+    }
+
+    @Override
+    public void add(user user) {
+        followers.addElement(user);
+    }
+
    
     
     

@@ -9,7 +9,6 @@ package twitter;
  * @author zihan
  */
 public interface Subject {
-    public void add(Observer observer);
-    public void notifyObservers(Observer observer);
-    
+    public void notifyObservers(user user);
+    public void add(user user);
 }

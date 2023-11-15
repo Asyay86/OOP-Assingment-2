@@ -4,8 +4,6 @@
  */
 package twitter;
 
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.DefaultListModel;
 
 /**
@@ -21,9 +19,6 @@ public class userGroup extends Composite implements twitter.Observer{
     private String groupID;
     private DefaultListModel<String> users = new DefaultListModel<>();
     private DefaultListModel<String> groups = new DefaultListModel<>();
-    
-    
-    
     
     
     //implement components
@@ -42,9 +37,14 @@ public class userGroup extends Composite implements twitter.Observer{
         return this.getID();
     }
 
+
+    public void add(user u) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
-    public void update(Subject data) {
-        
+    public void update(user u) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
   

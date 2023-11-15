@@ -9,7 +9,7 @@ package twitter;
  * @author zihan
  */
 public interface Observer {
-    
-    public void update(Subject subject);
+
+    public void update(user u);
     
 }

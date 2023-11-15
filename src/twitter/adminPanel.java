@@ -36,12 +36,12 @@ public class adminPanel extends javax.swing.JFrame {
     private static List<user> id = new ArrayList<>();
     private static List<userGroup> g = new ArrayList<>();
     
-    public static boolean searchId(String name){
-        boolean result = false;
+    public static user searchId(String name){
+        user result = new user("");
         
         for(int i = 0; i < id.size(); i++){
             if(name.equals(id.get(i).getID())){
-                result = true;
+                result = id.get(i);
             }
         }
         
