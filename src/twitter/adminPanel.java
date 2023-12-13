@@ -64,6 +64,7 @@ public class adminPanel extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        showMessages1 = new javax.swing.JButton();
         addUser = new javax.swing.JButton();
         addGroup = new javax.swing.JButton();
         openUserView = new javax.swing.JButton();
@@ -80,6 +81,10 @@ public class adminPanel extends javax.swing.JFrame {
         label2 = new java.awt.Label();
         jScrollPane1 = new javax.swing.JScrollPane();
         treeView = new javax.swing.JTree();
+        validateId = new javax.swing.JButton();
+        showCreation = new javax.swing.JButton();
+        showUpdated = new javax.swing.JButton();
+        findUpdated = new javax.swing.JButton();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -92,6 +97,13 @@ public class adminPanel extends javax.swing.JFrame {
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
+
+        showMessages1.setText("Show Messages Total");
+        showMessages1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showMessages1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +177,34 @@ public class adminPanel extends javax.swing.JFrame {
         treeView.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(treeView);
 
+        validateId.setText("Validate ID");
+        validateId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validateIdActionPerformed(evt);
+            }
+        });
+
+        showCreation.setText("Show Creation Time");
+        showCreation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showCreationActionPerformed(evt);
+            }
+        });
+
+        showUpdated.setText("Show Updated Time");
+        showUpdated.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showUpdatedActionPerformed(evt);
+            }
+        });
+
+        findUpdated.setText("Find Last Updated");
+        findUpdated.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findUpdatedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,11 +229,15 @@ public class adminPanel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(showUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(showMessages, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                            .addComponent(showMessages, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(validateId, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(showUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(showPercentage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(showGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(showGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(showCreation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(findUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(openUserView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,9 +251,9 @@ public class adminPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
@@ -226,7 +270,7 @@ public class adminPanel extends javax.swing.JFrame {
                             .addComponent(addGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                             .addComponent(groupId, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(openUserView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(openUserView, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(showUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +278,16 @@ public class adminPanel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(showMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(showPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(showPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(showCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(validateId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(findUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(showUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31))))
         );
 
         label1.getAccessibleContext().setAccessibleName("userId");
@@ -317,6 +370,26 @@ public class adminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_showPercentageActionPerformed
 
+    private void showMessages1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMessages1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showMessages1ActionPerformed
+
+    private void validateIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_validateIdActionPerformed
+
+    private void showCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCreationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showCreationActionPerformed
+
+    private void showUpdatedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showUpdatedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showUpdatedActionPerformed
+
+    private void findUpdatedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findUpdatedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findUpdatedActionPerformed
+
     public void showFrame() {
         setVisible(true);
     }
@@ -360,6 +433,7 @@ public class adminPanel extends javax.swing.JFrame {
     private javax.swing.JScrollPane UserId;
     private javax.swing.JButton addGroup;
     private javax.swing.JButton addUser;
+    private javax.swing.JButton findUpdated;
     private javax.swing.JTextArea groupArea;
     private javax.swing.JScrollPane groupId;
     private javax.swing.JFormattedTextField jFormattedTextField1;
@@ -373,11 +447,15 @@ public class adminPanel extends javax.swing.JFrame {
     private java.awt.Label label1;
     private java.awt.Label label2;
     private javax.swing.JButton openUserView;
+    private javax.swing.JButton showCreation;
     private javax.swing.JButton showGroup;
     private javax.swing.JButton showMessages;
+    private javax.swing.JButton showMessages1;
     private javax.swing.JButton showPercentage;
+    private javax.swing.JButton showUpdated;
     private javax.swing.JButton showUser;
     private javax.swing.JTree treeView;
     private javax.swing.JTextArea userArea;
+    private javax.swing.JButton validateId;
     // End of variables declaration//GEN-END:variables
 }
