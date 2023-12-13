@@ -82,8 +82,6 @@ public class adminPanel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         treeView = new javax.swing.JTree();
         validateId = new javax.swing.JButton();
-        showCreation = new javax.swing.JButton();
-        showUpdated = new javax.swing.JButton();
         findUpdated = new javax.swing.JButton();
 
         jTextArea3.setColumns(20);
@@ -184,20 +182,6 @@ public class adminPanel extends javax.swing.JFrame {
             }
         });
 
-        showCreation.setText("Show Creation Time");
-        showCreation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showCreationActionPerformed(evt);
-            }
-        });
-
-        showUpdated.setText("Show Updated Time");
-        showUpdated.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showUpdatedActionPerformed(evt);
-            }
-        });
-
         findUpdated.setText("Find Last Updated");
         findUpdated.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,13 +214,11 @@ public class adminPanel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(showUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(showMessages, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .addComponent(validateId, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .addComponent(showUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                            .addComponent(validateId, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(showPercentage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(showGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(showCreation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(findUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(openUserView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -260,7 +242,7 @@ public class adminPanel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(addUser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48))
+                                .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(UserId, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,7 +252,7 @@ public class adminPanel extends javax.swing.JFrame {
                             .addComponent(addGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                             .addComponent(groupId, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(openUserView, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(openUserView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(showUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,13 +263,9 @@ public class adminPanel extends javax.swing.JFrame {
                             .addComponent(showPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(showCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(validateId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(findUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(showUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31))))
+                            .addComponent(validateId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(findUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16))))
         );
 
         label1.getAccessibleContext().setAccessibleName("userId");
@@ -309,9 +287,11 @@ public class adminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         if((user) treeView.getLastSelectedPathComponent() instanceof user){
             user u = (((user) treeView.getLastSelectedPathComponent()));
-            JFrame userV  = new userView(u);
-            userV.setTitle(u.getID());
+            userView userV  = new userView(u);
+            userV.setTitle("USER ID: " + u.getID() + " Time created: " + u.getCreation());
             userV.setVisible(true);
+            userV.setCreation(System.currentTimeMillis());
+            userV.setUpdate(System.currentTimeMillis());
         }
         else {
             JOptionPane.showMessageDialog(this, "Not applicable to this");
@@ -334,8 +314,11 @@ public class adminPanel extends javax.swing.JFrame {
             else{
                 String name = userArea.getText();
                 user newNode = new user(name);
+                newNode.setCreation(System.currentTimeMillis());
                 selectedNode.add(newNode);
                 id.add(newNode);
+                newNode.setCreation(System.currentTimeMillis());
+                newNode.setUpdate(System.currentTimeMillis());
                 
                 ((DefaultTreeModel) treeView.getModel()).nodeStructureChanged(selectedNode);
             }
@@ -355,6 +338,8 @@ public class adminPanel extends javax.swing.JFrame {
                 userGroup newNode = new userGroup(name + "(Group)");
                 selectedNode.add(newNode);
                 g.add(newNode);
+                newNode.setCreation(System.currentTimeMillis());
+                newNode.setUpdate(System.currentTimeMillis());
             
                 ((DefaultTreeModel) treeView.getModel()).nodeStructureChanged(selectedNode);
             }
@@ -376,18 +361,37 @@ public class adminPanel extends javax.swing.JFrame {
 
     private void validateIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateIdActionPerformed
         // TODO add your handling code here:
+        
+        for(int i = 0; i < id.size()-1; i++){
+            for(int j = i+1; j < id.size(); j++){
+                if(id.get(i).getID().equals(id.get(j).getID()) || id.get(i).getID().contains(" ")){
+                    JOptionPane.showMessageDialog(this, id.get(i).getID() + " is not a valid ID.");
+                }
+            }
+        }
+        
+        for(int i = 0; i < g.size()-1; i++){
+            for(int j = i+1; j < g.size(); j++){
+                if(g.get(i).getID().equals(g.get(j).getID()) || g.get(i).getID().contains(" ")){
+                    JOptionPane.showMessageDialog(this, g.get(i).getID() + " is not a valid ID.");
+                }
+            }
+        }
     }//GEN-LAST:event_validateIdActionPerformed
-
-    private void showCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCreationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showCreationActionPerformed
-
-    private void showUpdatedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showUpdatedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showUpdatedActionPerformed
 
     private void findUpdatedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findUpdatedActionPerformed
         // TODO add your handling code here:
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) treeView.getLastSelectedPathComponent();
+        if(selectedNode != null && (!groupArea.getText().equals("") || !userArea.getText().equals(""))){
+            if(selectedNode instanceof user){
+                user u = (((user) treeView.getLastSelectedPathComponent()));
+                JOptionPane.showMessageDialog(this, u.getUpdated());
+            }
+            else if(selectedNode instanceof userGroup){
+                userGroup u = (((userGroup) treeView.getLastSelectedPathComponent()));
+                JOptionPane.showMessageDialog(this, u.getUpdated());
+            }
+        }
     }//GEN-LAST:event_findUpdatedActionPerformed
 
     public void showFrame() {
@@ -447,12 +451,10 @@ public class adminPanel extends javax.swing.JFrame {
     private java.awt.Label label1;
     private java.awt.Label label2;
     private javax.swing.JButton openUserView;
-    private javax.swing.JButton showCreation;
     private javax.swing.JButton showGroup;
     private javax.swing.JButton showMessages;
     private javax.swing.JButton showMessages1;
     private javax.swing.JButton showPercentage;
-    private javax.swing.JButton showUpdated;
     private javax.swing.JButton showUser;
     private javax.swing.JTree treeView;
     private javax.swing.JTextArea userArea;

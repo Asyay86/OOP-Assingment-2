@@ -16,9 +16,32 @@ public class userGroup extends Composite implements twitter.Observer{
         this.groupID = ID;
     }
     
+    //Creation Time
+    private long creation;
+    
+    //Updated Time;
+    private long updated;
+    
     private String groupID;
     private DefaultListModel<String> users = new DefaultListModel<>();
     private DefaultListModel<String> groups = new DefaultListModel<>();
+    
+    
+    public long getCreation(){
+        return creation;
+    }
+    
+    public long getUpdated(){
+        return updated;
+    }
+    
+    public void setCreation(long value){
+        this.creation = value;
+    }
+    
+    public void setUpdate(long value){
+        this.updated = value;
+    }
     
     
     //implement components

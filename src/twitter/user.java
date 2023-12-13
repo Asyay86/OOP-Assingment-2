@@ -22,6 +22,12 @@ public class user extends Composite implements Subject, Observer{
         this.news = new DefaultListModel<>();
     }
     
+    //Creation Time
+    private long creation;
+    
+    //Updated Time;
+    private long updated;
+    
     //User's ID
     private String uniqueID;
     
@@ -37,7 +43,7 @@ public class user extends Composite implements Subject, Observer{
     //Storing tweet 
     private DefaultListModel<String> message = new DefaultListModel<>();
     
-    private JFrame frame = new userView(this);
+    private userView frame = new userView(this);
     
     public void postTweet(String content){
         
@@ -71,12 +77,30 @@ public class user extends Composite implements Subject, Observer{
         return news;
     }
     
+    public long getCreation(){
+        return creation;
+    }
+    
+    public long getUpdated(){
+        return updated;
+    }
+    
+    public userView getFrame(){
+        return frame; 
+    }
+    
     public void setVisible(){
         this.frame.setVisible(true);
         this.frame.setTitle(getID());
     }
     
+    public void setCreation(long value){
+        this.creation = value;
+    }
     
+    public void setUpdate(long value){
+        this.updated = value;
+    }
 
     @Override
     public void setID(String ID) {

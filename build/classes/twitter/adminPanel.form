@@ -98,13 +98,11 @@
                           <Component id="showUser" max="32767" attributes="0"/>
                           <Component id="showMessages" pref="159" max="32767" attributes="0"/>
                           <Component id="validateId" pref="159" max="32767" attributes="0"/>
-                          <Component id="showUpdated" pref="159" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="showPercentage" max="32767" attributes="0"/>
                           <Component id="showGroup" max="32767" attributes="0"/>
-                          <Component id="showCreation" max="32767" attributes="0"/>
                           <Component id="findUpdated" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -135,7 +133,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="addUser" min="-2" pref="60" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="UserId" min="-2" pref="60" max="-2" attributes="0"/>
@@ -149,7 +147,7 @@
                           <Component id="groupId" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="openUserView" pref="0" max="32767" attributes="0"/>
+                      <Component id="openUserView" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="showUser" min="-2" pref="35" max="-2" attributes="0"/>
@@ -162,15 +160,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="showCreation" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="validateId" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="findUpdated" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="showUpdated" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -311,22 +304,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validateIdActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="showCreation">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Show Creation Time"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showCreationActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="showUpdated">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Show Updated Time"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showUpdatedActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="findUpdated">
